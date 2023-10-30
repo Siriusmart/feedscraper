@@ -687,7 +687,6 @@ dependencies = [
  "rustls-pemfile",
  "scrapyard",
  "serde",
- "serde-inline-default",
  "serde_default",
  "tokio",
 ]
