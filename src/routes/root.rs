@@ -2,7 +2,7 @@ use actix_web::{get, http::header::ContentType, HttpResponse};
 use serde::{Deserialize, Serialize};
 use std::fmt::Write;
 
-use crate::FEEDS_LIST;
+use crate::{FEEDS_LIST, FS_CONFIG};
 
 #[get("/")]
 pub async fn root_service() -> HttpResponse {
@@ -20,14 +20,16 @@ pub async fn root_service() -> HttpResponse {
             .unwrap();
             s
         });
-    // .map(|(label, title)| {
-    //     format!(
-    //         r#"<li><a href="/{}">{}</a></li>"#,
-    //         html_escape::encode_text(label),
-    //         html_escape::encode_text(title)
-    //     )
-    // })
-    // .collect::<String>();
+
+    let conf = FS_CONFIG.get().unwrap();
+
+    let splash = if conf.splash {
+        r#"<h1>Welcome to Feedscraper</h1><p>Feedscraper is an automatic and scriptable RSS generater. <a href="https://github.com/siriusmart/feedscraper">Source</a></p>"#
+    } else {
+        ""
+    };
+    let desc = conf.description.clone().unwrap_or_default();
+
     let html = format!(
         r#"<!DOCTYPE html>
 <html lang="en">
@@ -35,8 +37,8 @@ pub async fn root_service() -> HttpResponse {
     <title>Feedscraper</title>
 </head>
 <body>
-    <h1>Welcome to Feedscraper</h1>
-    <p>Feedscraper is an automatic and scriptable RSS generater. <a href="https://github.com/siriusmart/feedscraper">Source</a></p>
+    {splash}
+    {desc}
     <h2>Available feeds</h2>
     <ul>{feeds}</ul>
 </body>

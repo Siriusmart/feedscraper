@@ -9,6 +9,9 @@ pub struct FScraperConfig {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub https: Option<HttpsConfig>,
     pub show_feed_configs: bool,
+    pub splash: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
 }
 
 impl Default for FScraperConfig {
@@ -16,6 +19,10 @@ impl Default for FScraperConfig {
         Self {
             http_port: Some(8080),
             https: None,
+            splash: true,
+            description: Some(
+                "You are encouraged to share the sources of your scraper scripts here".to_string(),
+            ),
             show_feed_configs: true,
         }
     }
