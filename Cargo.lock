@@ -1545,9 +1545,9 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "scrapyard"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "296b0716be0ce110dced3732a11b470455c66801fe2150ea445685e5bb558aa2"
+checksum = "b9ab8abf34d36ee08046baf2ab67d9a5c7a2f1c3dc0d6340c01fd185c7d1d938"
 dependencies = [
  "async-recursion",
  "async-trait",

@@ -14,7 +14,7 @@ categories = ["parsing"]
 [dependencies]
 actix-web = { version = "4.4", features = [ "rustls" ]}
 tokio = { version = "1.33", features = [ "rt", "rt-multi-thread", "macros" ]}
-scrapyard = "0.1"
+scrapyard = "0.2"
 # scrapyard = { path = "../scrapyard"}
 dirs = "5.0"
 serde = "1.0"
