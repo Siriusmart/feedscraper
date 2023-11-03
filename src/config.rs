@@ -5,6 +5,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct FScraperConfig {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
     pub http_port: Option<u16>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub https: Option<HttpsConfig>,
@@ -12,11 +14,13 @@ pub struct FScraperConfig {
     pub splash: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    pub version: bool,
 }
 
 impl Default for FScraperConfig {
     fn default() -> Self {
         Self {
+            title: Some("A self hosted feedscraper instance".to_string()),
             http_port: Some(8080),
             https: None,
             splash: true,
@@ -24,6 +28,7 @@ impl Default for FScraperConfig {
                 "You are encouraged to share the sources of your scraper scripts here".to_string(),
             ),
             show_feed_configs: true,
+            version: true,
         }
     }
 }

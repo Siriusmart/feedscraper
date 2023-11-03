@@ -27,7 +27,10 @@ Config files can be found in `~/.config/feedscraper` (Linux), `/Users/[Username]
         chain: String, // path to ssl chain, e.g. /etc/letsencrypt/live/yourdomain.com/fullchain.pem
         key: String // path to ssl privkey, e.g. /etc/letsencrypt/live/yourdomain.com/privkey.pem
     }?,
-    "show_feed_configs": Boolean
+    "show_feed_configs": Boolean,
+    "description": String, // html string, it is unsanitised and may include css links and etc
+    "splash": Boolean, // show default message
+    "version": Boolean, // show version in homepage
 }
 ```
 
